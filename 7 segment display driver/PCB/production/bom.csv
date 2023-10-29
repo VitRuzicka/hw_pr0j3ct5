@@ -1,0 +1,12 @@
+Designator,Footprint,Quantity,Value,LCSC Part #
+"C2, C3",0805,2,10nF,
+"H1, H2",MountingHole_2.2mm_M2,2,MountingHole,
+J1,PinHeader_1x06_P2.54mm_Horizontal,1,Conn_01x06,
+J2,PinSocket_1x06_P2.54mm_Horizontal,1,Conn_01x06,
+Q1,SOT-23,1,BC817,
+"R1, R9",0402,2,50R,
+"R10, R11, R12, R13, R14, R15, R16, R2, R3, R4, R5, R6, R7, R8",0402,14,100R,
+R17,0805,1,1k,
+"U1, U2",SOIC-16_3.9x9.9mm_P1.27mm,2,74HC595,
+"U3, U6",SA15-11xxx,2,SA15-11SRWA,
+U7,WEMOS_D1_mini_light,1,WeMos_D1_mini,
