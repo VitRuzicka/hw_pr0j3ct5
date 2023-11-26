@@ -1,0 +1,12 @@
+Designator,Footprint,Quantity,Value,LCSC Part #
+"C1, C2",0805,2,1uF,
+"C3, C5",0603,2,C,
+"C4, C6",0603,2,100n,
+CH32V1,TSSOP-20_4.4x6.5mm_P0.65mm,1,CH32V003_TSSOP20,
+D1,0805,1,LED,
+J1,PinHeader_1x04_P1.27mm_Vertical,1,Conn_01x04,
+"J2, J3",PinHeader_1x02_P2.54mm_Vertical,2,Conn_01x02,
+Q1,SOT-23,1,BC817,
+"R1, R2, R3, R4, R5, R6, R7",0603,7,R,
+U1,SOT-223-3_TabPin2,1,AMS1117-5.0,
+"U2, U3",SOT-23-6,2,TTP223,
