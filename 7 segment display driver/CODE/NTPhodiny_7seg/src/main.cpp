@@ -1,4 +1,5 @@
 #include <ESP8266WiFi.h>
+#include <WiFiManager.h>
 #include <time.h>
 
 #define LATCH 0
@@ -8,10 +9,7 @@
 #define DELAY 50 //let the cap settle
 #define INTERVAL 1000000
 
-
-const char *ssid     = "Wont tell";
-const char *password = "put in yours";
-unsigned long lasTime = 0;
+// WiFi credentials removed - now using WiFiManager
 
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 0;
@@ -117,16 +115,38 @@ void setTimezone(String timezone){
 
 void setup(){
   Serial.begin(9600);
-  WiFi.begin(ssid, password);
-   // put your setup code here, to run once:
+  
+  // Setup WiFiManager
+  WiFiManager wifiManager;
+  
+  // Uncomment this line to reset saved WiFi credentials (for testing)
+  // wifiManager.resetSettings();
+  
+  // Setup pins before WiFi connection
   pinMode(LATCH, OUTPUT);
   pinMode(CLK, OUTPUT);
   pinMode(DAT, OUTPUT);
   analogWrite(PWM, 255); //full blast
-
-  while ( WiFi.status() != WL_CONNECTED ) {
+  
+  // Show loading animation while attempting to connect
+  // If it fails to connect, it will start an access point with name "NTP_Clock_Setup"
+  // Connect to it and configure WiFi credentials through the captive portal
+  while (WiFi.status() != WL_CONNECTED) {
     loading();
+    
+    // Try to autoconnect. If it fails, start config portal
+    if (!wifiManager.autoConnect("NTP_Clock_Setup")) {
+      Serial.println("Failed to connect and hit timeout");
+      // Reset and try again
+      ESP.restart();
+      delay(1000);
+    }
   }
+  
+  Serial.println("Connected to WiFi!");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+  
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer); //connect to NTP server 
   setTimezone("CET-1CEST,M3.5.0,M10.5.0/3"); //https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
 
