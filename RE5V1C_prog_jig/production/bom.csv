@@ -1,0 +1,5 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+D1,0805,1,LED,
+J1,PinSocket_1x06_P2.54mm_Horizontal,1,LASKAKIT_PROG,
+J2,PinHeader_1x07_P2.00mm_Vertical,1,SONOFF RE5V1C,
+R1,0805,1,1k,
